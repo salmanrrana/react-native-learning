@@ -7,14 +7,16 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
   const { containerStyle, textStyle, cardSectionStyle } = styles;
     return (
       <Modal
+        visible={visible}
+        transparent
         animationType="slide"
         onRequestClose={() => {}}
-        transparent
-        visibile={visible}
       >
         <View style={containerStyle}>
           <CardSection style={cardSectionStyle}>
-            <Text style={textStyle}>{children}</Text>
+            <Text style={textStyle}>
+              {children}
+            </Text>
           </CardSection>
 
           <CardSection>

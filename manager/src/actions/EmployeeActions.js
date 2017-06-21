@@ -52,3 +52,17 @@ export const employeeSave = ({ name, phone, shift, uid }) => {
     });
   };
 };
+
+export const employeeDelete = ({ uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return () => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+      .remove()
+      .then(() => {
+          //this type: reset is to state that we are not going to a
+          // new view. we are not going forward, just going to a new bucket of views
+        Actions.employeeList({ type: 'reset' });
+      });
+  };
+};
